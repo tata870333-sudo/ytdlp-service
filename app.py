@@ -18,7 +18,7 @@ def extract():
     ydl_opts = {
         'format': 'best[ext=mp4]/best',
         'noplaylist': True,
-        'extractor_args': {'youtube': {'player_client': ['android']}}
+        'cookiefile': 'youtube_cookies.txt',
     }
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
