@@ -15,7 +15,11 @@ def extract():
     if not url:
         return jsonify({'error': 'No URL provided'}), 400
     
-    ydl_opts = {'format': 'best'}
+    ydl_opts = {
+        'format': 'best[ext=mp4]/best',
+        'noplaylist': True,
+        'extractor_args': {'youtube': {'player_client': ['android']}}
+    }
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
